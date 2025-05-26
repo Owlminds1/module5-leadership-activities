@@ -1,0 +1,136 @@
+{
+    "L1": {
+        "C33": {
+            "Activity 1": {
+                "link": "/L1/C33/Activity-1",
+                "name": "Who is the Leader?"
+            },
+            "Activity 2": {
+                "link": "/L1/C33/Activity-2",
+                "name": "Leadership Wheel"
+            },
+            "Activity 3": {
+                "link": "/L1/C33/Activity-3",
+                "name": "Different Leaders, Different Styles"
+            },
+            "Activity 4": {
+                "link": "/L1/C33/Activity-4",
+                "name": "Leadership Quiz"
+            },
+            "Post Class Activity": {
+                "link": "/L1/C33/pca",
+                "name": "Leader Lookout Log"
+            }
+        },
+        "C35": {
+            "Activity 1": {
+                "link": "/L1/C35/Activity-1",
+                "name": "Inventor’s Rescue"
+            },
+            "Activity 2": {
+                "link": "/L1/C35/Activity-2",
+                "name": "Biomimicry Inspiration Station"
+            },            
+            "Activity 3": {
+                "link": "/L1/C35/Activity-3",
+                "name": "Superhero Showdown"
+            },
+            "Activity 4": {
+                "link": "/L1/C35/Activity-4",
+                "name": "V Draw Challenge"
+            },
+            "Post Class Activity" : {
+                "link": "/L1/C35/pca",
+                "name": "Nature Walk Notebook"
+            }
+        }
+    },
+    "L2": {
+        "C33": {
+            "Activity 1": {
+                "link": "/L2/C33/Activity-1",
+                "name": "Where Does This Leader Belong?"
+            },
+            "Activity 2": {
+                "link": "/L2/C33/Activity-2",
+                "name": "Different Leaders, Different Styles"
+            },
+            "Activity 3": {
+                "link": "/L2/C33/Activity-3",
+                "name": "Discover Leadership Style"
+            },
+            "Activity 4": {
+                "link": "/L2/C33/Activity-4",
+                "name": "SWOT It Out"
+            }
+        },
+        "C35": {
+            "Warm up activity":{
+                "link": "/L2/C35/Warm-up-activity",
+                "name": "Color Confusion"
+            },
+            "Activity 1": {
+                "link": "/L2/C35/Activity-1",
+                "name": "What If?"
+            },
+            "Activity 2": {
+                "link": "/L2/C35/Activity-2",
+                "name": "Problem-Solving Patrol"
+            },
+            "Activity 3": {
+                "link": "/L2/C35/Activity-3",
+                "name": "Robot Solutions: Fix or Flop?"
+            },
+            "Activity 4": {
+                "link": "/L2/C35/Activity-4",
+                "name": "Story Spinner"
+            },
+            "Post Class Activity" : {
+                "link": "/L2/C35/pca",
+                "name": "Home Problem Solver"
+            }
+        }
+    },
+    "L3": {
+        "C33": {
+            "Activity 1": {
+                "link": "/L3/C33/Activity-1",
+                "name": "Where Does This Leader Belong?"
+            },
+            "Activity 2": {
+                "link": "/L3/C33/Activity-2",
+                "name": "Different Leaders, Different Styles"
+            },
+            "Activity 3": {
+                "link": "/L3/C33/Activity-3",
+                "name": "Circle of Understanding"
+            },
+            "Activity 4": {
+                "link": "/L3/C33/Activity-4",
+                "name": "Dig Deeper with 5 Whys!"
+            }
+        },
+        "C35": {
+            "Activity 1": {
+                "link": "/L3/C35/Activity-1",
+                "name": "Biomimicry Inspiration Station"
+            },
+            "Activity 2": {
+                "link": "/L3/C35/Activity-2",
+                "name": "The Sparkstone Fix-It Mission"
+            },
+            "Activity 3": {
+                "link": "/L3/C35/Activity-3",
+                "name": "Mind Map Magic"
+            },
+            "Activity 4": {
+                "link": "/L3/C35/Activity-4",
+                "name": "Innovation Lab Challenge"
+            },
+            "Post Class Activity" : {
+                "link": "/L3/C35/pca",
+                "name": "Nature Walk Notebook"
+            }
+        }
+    }
+}

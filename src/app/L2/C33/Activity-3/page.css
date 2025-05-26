@@ -1,0 +1,51 @@
+.headingContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.headingContainer .mainHeading {
+    font-size: 25px;
+    font-weight: 600;
+    color: #1768ad;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgb(0 0 0 / 30%);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.headingContainer .logo {
+    width: 110px;
+    margin-left: 10px;
+}
+
+
+.introContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.introContainer .introHeroImg {
+    width: 200px;
+}
+
+.introContainer .introText {
+    text-align: center;
+    margin-top: 100px;
+    font-size: 41px;
+    color: #0c4f7d;
+    font-weight: 600;
+    width: 430px;
+}
+
+.introContainer .startBtn{
+    border: 0;
+    border-radius: 7px;
+    background: #d69510;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 7px 47px;
+    margin-top: 20px;
+}

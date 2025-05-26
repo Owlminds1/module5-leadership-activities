@@ -1,0 +1,73 @@
+
+.slidesMainContainer .headingOg {
+    margin-bottom: 20px;
+    font-size: 27px;
+    font-weight: 700;
+    max-width: 700px;
+}
+
+.slidesMainContainer .heading {
+    margin-bottom: 20px;
+    font-size: 23px;
+    font-weight: 600;
+    max-width: 600px;
+}
+
+.slidesMainContainer .subHeading {
+    margin-bottom: 20px;
+    font-size: 21px;
+    max-width: 600px;
+}
+
+.slidesMainContainer .currentObj {
+    width: 350px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.slidesMainContainer .nextButton {
+    background: green;
+    color: white;
+    padding: 8px 10px;
+    font-size: 18px;
+    margin-top: 10px;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 200px;
+    margin-bottom: 30px;
+}
+
+.slidesMainContainer .nextButton:hover {
+    font-size: 19px;
+}
+
+.slidesMainContainer .leftCon,
+.slidesMainContainer .rightCon {
+    border-radius: 10px;
+}
+
+.slidesMainContainer .rightCon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.slidesMainContainer .rightCon .solutionPara {
+    padding: 12px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.slidesMainContainer .rightCon .solutionPara .sp1 {
+    font-weight: 600;
+    background: #c20c82;
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+    margin-right: 10px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}

@@ -1,0 +1,9 @@
+.slideShowContainer button {
+    margin-bottom: 20px;
+    min-width: 100%;
+    font-size: 18px;
+}
+
+.slideShowContainer button:hover {
+    font-size: 21px;
+}
