@@ -9,10 +9,8 @@ export default function Home() {
   return (
     <div className="mainContainer">
       <div className="headingContainer" id="headingContainer">
-        <h1 className="mainHeading">Nature Walk Notebook</h1>
+        <h1 className="mainHeading !mb-[0px]">Nature Walk Notebook</h1>
       </div>
-      <hr />
-      <br />
       <center>
         <Slider />
       </center>

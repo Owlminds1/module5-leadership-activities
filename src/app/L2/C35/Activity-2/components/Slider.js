@@ -16,17 +16,17 @@ export default function Slider() {
         {
             img: S1,
             heading: "The Crowded Playground",
-            subHeading: "At recess, the playground is jam-packed! Kids bump into each other and can’t enjoy the swings or games.Principal Penny says, ‘We need everyone to play and stay safe. What can we do?’",
+            subHeading: "At recess, the playground gets overcrowded! Kids bump into each other and constantly haggle over their turns to use swings and slides. Principal Penny says, ‘We do not want to stop students from playing, but we need to ensure that everyone stays safe.What do we do?’",
         },
         {
             img: S2,
             heading: "Missing Library Books",
-            subHeading: "Lots of students forget to return library books on time. Principal Penny says, ‘Books love to come home… but they love coming back even more! Can we make it easier to remember?’ Also, some books come back torn or dirty. How can we make sure they return in good condition too?",
+            subHeading: "Lots of students forget to return library books on time. Principal Penny says, ‘Books love to come home… but they love coming back to the library even more!  Some books come back torn or with stains. How can we make sure they return the books in time and in good condition?",
         },
         {
             img: S3,
             heading: "Unfair Team Picking",
-            subHeading: "During PE or recess, some kids always get picked last for team games and they feel left out or don’t even get a turn to play. Principal Penny says, ‘We want games to be fun and fair for everyone! Can we come up with a better way to pick teams and include everyone?’",
+            subHeading: "During PE or recess, some kids always get picked last for team games and they feel left out or don’t even get a turn to play. Principal Penny says, ‘We want games to be fair for all! Can we please come up with a better way to pick teams so as to include everyone?’",
         }
     ]
 

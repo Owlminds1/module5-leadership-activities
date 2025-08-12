@@ -7,7 +7,7 @@ export default function Com1(props) {
       dis: "Quick, fun-loving, always thinking of exciting ideas."
     },
     sh2: {
-      name: "Dr. Brainy",
+      name: "Dr. Akilah",
       dis: "Calm, thoughtful, gets ideas from nature and real life."
     }
   }
