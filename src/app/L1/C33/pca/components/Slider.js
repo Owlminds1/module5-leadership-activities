@@ -1,7 +1,7 @@
 'use client'
 
 const places = [
-  'Garden',
+  'Park',
   '__________',
   '__________',
   '__________',

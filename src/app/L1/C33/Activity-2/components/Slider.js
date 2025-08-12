@@ -1,37 +1,47 @@
 'use client'
 
 import { useState, useRef } from 'react'
+import S1 from '../assets/s1.png';
+import S2 from '../assets/s2.png';
+import S3 from '../assets/s3.png';
+import Image from 'next/image';
 
 const initialPrizes = [
     {
         main: "Birthday Boss",
-        seen: "It’s your friend’s birthday party, and YOU are the Birthday Boss! That means you’re in charge of making sure everyone has fun, feels included, and stays safe. You get to decide the games, snacks, and party rules!",
+        seen: "It’s your friend’s birthday party, and YOU are the Birthday Boss! You’re in charge of making sure everyone has fun, feels included, and stays safe. You get to decide the games, snacks, and party rules!",
         questions: [
-            "What are 3 fun things you'd plan for the party to make everyone smile?",
+            "What are 3 fun activities you would do?",
             "What’s one party rule you’d make so everyone feels included?",
             "If someone at the party is sad or left out, what would you say to them?",
             "What can you do to make sure YOU are being a kind and fair Birthday Boss?",
+            "What food will you select so that everyone likes the food served?",
+            "What can you do to make sure YOU are being a kind and fair Birthday Boss?",
             "How can you help your guests feel special too?",
-        ]
+        ],
+        img : S1
     },
     {
         main: "Pet Leader",
         seen: "You’re in charge of a house full of pets, some real, some imaginary! A puppy won’t stop barking, a cat spilled her food, and a parrot looks sad. It’s your job to help your pets feel calm, safe, and happy!",
         questions: [
-            "What are 3 things you would do right away to help your pets: A puppy that keeps barking. A cat that knocked over her food bowl. A guinea pig that’s hiding in its house?",
+            "You’re in charge of three pets! A puppy won’t stop barking, a cat spilled her food, and a parrot thats unusually quiet! Take care of the pets to make them calm and happy!",
+            "What are 3 things you would immediately do to help your pets: A puppy that keeps barking.A cat that knocked over her food bowl",
             "What rule would you make for your pets to keep your home safe and peaceful?",
             "If your parrot is feeling lonely, what would you do to cheer them up?",
             "How will you be a kind and fair Pet Leader every day?",
-        ]
+        ],
+        img : S2
     },
     {
         main: "Caring Sibling",
         seen: "Your little sibling was playing outside and accidentally tripped and scraped their knee. They’re crying, and you want to help them feel better. It’s your job to take care of them until a grown-up arrives!",
         questions: [
-            "What are 3 things you would do right away to help your sibling?",
-            "Your sibling is crying and scared. What would you say or do to make them feel better?",
+            "What are 3 things you would immediately do to help your sibling?",
+            "Your sibling is crying. What would you say or do to make them feel better?",
             "How are you showing leadership at this moment?"
-        ]
+        ],
+        img : S3
     }
 ]
 
@@ -132,6 +142,12 @@ export default function SpinWheelGame() {
                             <p className='text-xl mb-6'>
                                 {selectedPrize.seen}
                             </p>
+
+                            <Image
+                                src={selectedPrize.img}
+                                alt={selectedPrize.main}
+                                className="w-[300px] h-auto rounded-lg shadow-md mb-6"
+                            />
                         </div>
 
                         {shownQuestions.length > 0 && (

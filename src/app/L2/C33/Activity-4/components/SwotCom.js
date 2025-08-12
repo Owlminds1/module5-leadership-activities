@@ -26,9 +26,9 @@ export default function Slider(props) {
 
     const generalQuestions = [
         "What’s good about this idea?",
-        "What could be the downside?",
-        "What could it lead to later?",
-        "What could go wrong?"
+        "What might be the downside?",
+        "What good might happen?",
+        "What might go wrong?"
     ];
 
     const borderStyles = [

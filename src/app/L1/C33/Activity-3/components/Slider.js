@@ -17,8 +17,8 @@ export default function Slider() {
             subHeading: "Two kids, Alex and Emma, are arguing over who got the ball first. Everyone else has stopped playing. There are two sports teachers. Let’s see how they handle the situation.",
             char1_name: "Coach 1: David",
             chart1_res: "“Stop arguing! You sit out, you keep the ball. No more fighting or no one plays. I make the rules!”",
-            char2_name: "Coach 2: Mark",
-            chart2_res: "“Okay, I understand both of you are upset. Let’s listen to each other. How about we take turns with the ball? We can play a game where we flip a coin to decide who goes first, and then switch after 5 minutes. This way everyone gets a turn and no one gets left out!”",
+            char2_name: "Coach 2: Marci",
+            chart2_res: "Okay, I understand both of you are upset. Let’s listen to each other. How about we take turns with the ball? Let’s play a game to decide who goes first, and then switch after 5 minutes. This way everyone gets a turn and no one gets left out!",
             questions: [
                 "Which coach helped the most?",
                 "Was the bossy coach kind to the other kids? Why or why not?",
@@ -28,8 +28,8 @@ export default function Slider() {
         },
         {
             img: S2,
-            heading: "The Sibling Tumblr",
-            subHeading: "John and Mike are friends. Their kids, Mia and Leo, are playing tag in the living room. Leo trips and falls! Let’s see how the two dads react.",
+            heading: "The Friendship Tumblr",
+            subHeading: "John and Mike are friends. Their kids, Mia (John’s daughter) and Leo (Mike’s son), are playing tag in the living room. Suddenly, Leo trips and falls! When he starts crying, Mia looks really worried. Let’s see how the two dads respond to the situation.",
             char1_name: "John",
             chart1_res: "“Mia! This is why I told you not to run inside! Go sit in time-out. Leo, you’ll be fine—just stop crying.”",
             char2_name: "Mike",
@@ -97,7 +97,7 @@ export default function Slider() {
                         onClick={handleNextQuestion}
                         className="cursor-pointer bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-2 px-6 py-3 rounded-xl shadow-lg transition-all duration-200"
                     >
-                         Next Question
+                        Next Question
                     </button>
                 ) : currentObjIndex < obj.length - 1 ? (
                     <button

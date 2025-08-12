@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="mainContainer bg-gradient-to-br from-blue-100 to-purple-100">
       <div className="headingContainer" id="headingContainer">
-        <h1 className="mainHeading">Leadership Wheel</h1>
+        <h1 className="mainHeading !mt-[10px] !mb-[5px]">Leadership Wheel</h1>
       </div>
       <center>
         <Slider />

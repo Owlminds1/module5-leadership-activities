@@ -14,31 +14,31 @@ export default function Slider() {
         {
             img: S1,
             heading: "The Pizza Party Pick",
-            subHeading: "The class is choosing toppings for the pizza at the end-of-year party, but there are disagreements over which toppings to get.",
+            subHeading: "The class is choosing toppings for the pizza at the end-of-year party, but there are disagreements.",
             char1_name: "Class Monitor 1: Olivia",
             chart1_res: "“I’ve had enough! We’re getting pepperoni, and that’s final. Everyone will just have to deal with it.” ",
             char2_name: "Class Monitor 2: Emma",
-            chart2_res: "Let’s make sure everyone has a chance to pick a topping! We can all vote, and whatever topping gets the most votes wins. Everyone gets a say, and no one gets left out",
+            chart2_res: "Let’s make sure everyone has a chance to pick a topping! We can all vote, and the topping that gets the most votes wins. Everyone gets a say, and no one gets left out.",
             questions: [
                 "Who gave everyone a chance to be included?",
-                "Did Olivia’s style help the group or make it worse?",
-                "What would happen if Olivia was always the leader?",
+                "Did Olivia’s style help the group or not?",
+                "What would happen if Olivia were to always be the leader?",
                 "Whose leadership style is better in this situation? And why?",
             ]
         },
         {
             img: S2,
             heading: "The Bedtime Battle",
-            subHeading: "It’s bedtime, but two siblings, Ava and Ben, are arguing because Ben wants to stay up later to watch TV, while Ava wants to go to sleep early.",
+            subHeading: "It’s bedtime, but two siblings, Ava and Ben, argue because Ben wants to stay up until later to watch TV, while Ava wants to go to sleep early.",
             char1_name: "John (Elder Brother)",
-            chart1_res: "“You both go to bed now, no more talking or TV!”",
+            chart1_res: "“Both of you go to bed now, no more talking or TV!”",
             char2_name: "Alex (Father)",
-            chart2_res: "“Ava, you sleep now. Ben you come to our room and finish your show, but bedtime rules stay. Let’s talk if you want to change it in the future.”",
+            chart2_res: "“Ava, please sleep now. Ben you come to our room to finish your show, but bedtime rules stay. Let’s talk if you want to change it later.”",
             questions: [
                 "Who made the situation feel fair for both kids?",
                 "How did John’s leadership style make Ava and Ben feel?",
                 "What would happen if John made all decisions like this?",
-                "Which leader helped both siblings feel like they had some control?",
+                "Who helped them feel like they had some control?",
                 "Whose leadership style is better in this situation? And why",               
             ]
         }

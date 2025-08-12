@@ -37,7 +37,7 @@ export default function Slider(props) {
             heading: "The Class Trip Dilemma",
             swotHeading1: "SWOT Analysis on Zoe’s Idea (Science Museum)",
             swotHeading2: "SWOT Analysis on Max’s Idea (Amusement Park)",
-            subHeading: "The school is planning an end-of-year class trip! You, Zoe, and Max are helping pick the destination, but you don’t agree!",
+            subHeading: "The school is planning an end-of-year class trip! You, Zoe, and Max are helping pick the destination, but you don’t agree, who is suggesting destinations, and you are not sure which of the two to pick.",
             subHeading1: "Zoe says: “Let’s go to the science museum! It’s full of cool experiments and space stuff.”",
             subHeading2: "Max says: “No way! Let’s go to the amusement park!”"
         },
@@ -46,7 +46,7 @@ export default function Slider(props) {
             heading: "The Birthday Cake Dilemma",
             swotHeading1: "SWOT Analysis on Mia’s Idea (Chocolate Cake)",
             swotHeading2: "SWOT Analysis on Noah’s Idea (Strawberry Cake)",
-            subHeading: "It's Mia's birthday, and her parents said she and her brother, Noah, can choose one cake together for the party.",
+            subHeading: "It's Mia's birthday, and her parents said she and her brother, Noah, can choose the cake for the party.",
             subHeading1: "Mia says: “Let’s get chocolate cake! Everyone loves it and it's my favorite!”",
             subHeading2: "Noah says: “No way! I want a strawberry cake because I hate chocolate!”"
         }
