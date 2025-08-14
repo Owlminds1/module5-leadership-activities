@@ -11,8 +11,6 @@ export default function Home() {
       <div className="headingContainer" id="headingContainer">
         <h1 className="mainHeading">Home Problem Solver</h1>
       </div>
-      <hr />
-      <br />
       <center>
         <Slider />
       </center>

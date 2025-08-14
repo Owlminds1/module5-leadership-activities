@@ -13,10 +13,10 @@ const problems = [
     brainy_idea: "Make labeled boxes—one for toys, one for books—and teach your sibling where each thing goes."
   },
   {
-    problem: "Maya is walking to the park and it starts raining, but she forgot her umbrella!",
+    problem: "Maya is walking to the park when it starts to rain. But she forgot her umbrella!",
     img: S2,
     zappy_idea: "Hold your empty lunch bag on your head like a helmet!",
-    brainy_idea: "Use a clean plastic grocery bag as a rain hat and put bags on your shoes too!"
+    brainy_idea: "Use a clean, reusable, plastic grocery bag as a rain hat and cover your shoes too!"
   },
   {
     problem: "Jack’s favorite pencil just broke and he doesn’t have any new ones!",
@@ -70,7 +70,7 @@ export default function Com2() {
           {/* Dr. Brainy */}
           <div className="bg-green-100 p-4 rounded-3xl shadow-xl border-4 border-green-300">
             <div className="flex items-center gap-4">
-              <h3 className="text-xl font-bold text-green-700">SuperHero 2 - Dr. Brainy</h3>
+              <h3 className="text-xl font-bold text-green-700">SuperHero 2 - Dr. Akilah</h3>
             </div>
             <p className="mt-2 text-md text-gray-800">{data.brainy_idea}</p>
             <table className="w-full mt-3 border border-green-300 rounded-xl overflow-hidden">

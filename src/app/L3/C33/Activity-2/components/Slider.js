@@ -30,14 +30,14 @@ export default function Slider() {
         {
             img: S2,
             heading: "The Team Conflict",
-            subHeading: "The school robotics team is preparing for a big competition next week. Every member has a key role in building the robot. During practice, Ethan and Nina have a disagreement about how to design the robot’s arm. The disagreement gets so intense that they stop talking to each other, and this is affecting team performance.",
+            subHeading: "During practice, Ethan and Nina have a disagreement about how to design the robot. But it gets so intense that they finally stop talking to each other, which in turn affects the team’s performance.",
             char1_name: "Leader 1: Zoe",
-            chart1_res: "“This isn’t my problem. If they can’t work together, I’ll just leave them out of the next session.”",
+            chart1_res: "“This isn’t my problem. If they are not able to work together, I’ll just leave them out of the next session.”",
             char2_name: "Leader 2: Layla",
             chart2_res: "“We need to talk it out. Let’s take 5 minutes to hear both sides and find a way to work together again.”",
             questions: [
                 "Who tried to keep the team united?",
-                "What could go wrong with Zoe’s approach?",
+                "What might go wrong with Zoe’s approach?",
                 "How might Layla help the team in the long run?",
                 "Which leader showed emotional intelligence?",
                 "Whose leadership style is better in this situation? And why?"

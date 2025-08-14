@@ -5,22 +5,22 @@ import { useState } from 'react';
 const problems = [
     {
         id: 'nonSlipShoes',
-        title: "You want to make shoes that don’t slip in the rain.",
+        title: "You want to make shoes have a strong grip when it rains.",
         questions: [
-            "Can you think of an animal that walks well on wet or slippery surfaces?",
-            "How do ducks or frogs walk without slipping?",
+            "Can you think of a creature that walks well with a strong grip on muddy or glossy surfaces?",
+            "How do ducks walk without slipping?",
             "What do their feet look like that helps them stay steady?",
-            "So what is your final invention? And is inspired from which natural thing?"
+            "What is your final invention? Which natural object inspires its design?",
         ]
     },
     {
         id: 'windProofTent',
-        title: "You want to design a tent that never blows away in the wind.",
+        title: "You want to design a tent that is sturdy in the wind.",
         questions: [
-            "Which animal or plant stays strong during storms?",
-            "How do trees or animals protect themselves from strong winds?",
+            "Which creature or plant stays strong during challenging weather?",
+            "How do trees or creatures protect themselves against heavy winds?",
             "What shapes or tricks help them stay standing?",
-            "So what is your final invention? And is inspired from which natural thing?"
+            "What is your final invention? Which natural object inspires its design?",
         ]
     }
 ];

@@ -5,14 +5,14 @@ import { useState } from 'react';
 const lockSteps = [
   {
     title: 'L – Lead (Who is the main character?)',
-    description: `Start with a character your reader will care about.
+    description: `Start with a character your reader will relate to.
 Give them a name, a personality, and something they love to do.`,
-    example: `Example: “Zara is a 9-year-old who loves solving mysteries with her dog, Pickles.”`
+    example: `Example: “Jasmine is a 9-year-old who loves solving mysteries with her dog, Pickles.”`
   },
   {
     title: 'O – Objective (What do they want or need to do?)',
-    description: `What is the character trying to do, find, fix, or learn?`,
-    example: `Example: “Zara wants to find out who’s stealing cookies from the school kitchen.”`
+    description: `What is the character trying to do, find, resolve, or learn?`,
+    example: `Example: “Jasmine wants to find out who’s stealing cookies from the school kitchen.”`
   },
   {
     title: 'C – Confrontation (What’s in their way?)',

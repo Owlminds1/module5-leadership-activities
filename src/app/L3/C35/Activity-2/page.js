@@ -17,7 +17,7 @@ export default function Home() {
     <div className="mainContainer">
       {currentObjIndex > 0 &&
         <div className="headingContainer" id="headingContainer">
-          <h1 className="mainHeading">The Sparkstone Fix-It Mission</h1>
+          <h1 className="mainHeading !mt-[10px] !mb-[0px]">The Sparkstone Fix-It Mission</h1>
           <br />
         </div>
       }

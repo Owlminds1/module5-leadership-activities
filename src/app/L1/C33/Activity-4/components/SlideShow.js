@@ -27,14 +27,14 @@ export default function SlideShow() {
         {
             "text": "A player isn’t listening. Should the coach…",
             "options": [
-                "Talk kindly",
+                "Speak to them calmly and kindly",
                 "Bench them",
                 "Walk away"
             ],
             "correctAnswer": 0
         },
         {
-            "text": "Your little sibling spilled their juice. What would a helpful leader do?",
+            "text": "Your little sibling spill juice. What would a helpful leader do?",
             "options": [
                 "Laugh at them",
                 "Complain loudly",
@@ -63,7 +63,7 @@ export default function SlideShow() {
         {
             "text": "If you’re leading a game and someone breaks a rule, what should you do?",
             "options": [
-                "Explain the rule nicely",
+                "Explain the rule once again",
                 "Shout at them",
                 "Stop the game forever"
             ],

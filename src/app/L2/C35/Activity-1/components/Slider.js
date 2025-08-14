@@ -34,11 +34,11 @@ export default function Slider() {
         },
         {
             img: S5,
-            subHeading: "What do you think will happen if you found a flying carpet in your closet?",
+            subHeading: "If you found a flying carpet in your closet?",
         },
         {
             img: S6,
-            subHeading: "What if cars could jump like frogs?",
+            subHeading: "What if cars jumped like amphibians?",
         },
     ]
 

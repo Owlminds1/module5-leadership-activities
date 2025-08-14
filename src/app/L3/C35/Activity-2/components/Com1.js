@@ -14,8 +14,7 @@ export default function Com1(pros) {
                 <div className="text-center lg:text-left">
                     <h1 className="mb-4 text-3xl font-bold text-blue-800">Sparkstone School</h1>
                     <p className="mb-4 text-gray-700 max-w-md text-[19px]">
-                        Welcome to Sparkstone School, where things are usually awesome… but not today!
-                        Coach Casey is on the lookout for brilliant problem solvers to help fix three problems that are bugging students around school.
+                        Coach Casey wants to identify brilliant problem-solvers to help resolve three problems around school. That’s where YOU come in as part of the Fix-It Patrol! You’ll brainstorm clever, realistic, or even tech-oriented solutions. Let’s go!
                     </p>
                     <Image
                         alt="School"

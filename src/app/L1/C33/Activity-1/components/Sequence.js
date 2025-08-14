@@ -16,6 +16,14 @@ const initialOptions = [
     { id: "3", text: "The parent", answer: "Home" },
 ];
 
+const questionsList = [
+    "Who do you think can be the leader here and why?",
+    "Which actions make this person a leader?",
+    "Which leadership qualities are very important here?",
+    "If the leader is busy, can anyone else be a little leader? Who and how?",
+    "What happens because this person is the leader?"
+];
+
 export default function DragDropOptions() {
     const [modalTitle, setModalTitle] = useState('');
     const [modalContent, setModalContent] = useState('');
@@ -27,6 +35,12 @@ export default function DragDropOptions() {
         SoccerGame: [],
         Home: []
     });
+
+    // Question state
+    const [questionIndex, setQuestionIndex] = useState(0);
+    const [visibleQuestions, setVisibleQuestions] = useState([]);
+    const [showQuestionButton, setShowQuestionButton] = useState(true);
+    const [showMoveNextButton, setShowMoveNextButton] = useState(false);
 
     const onDragEnd = (result) => {
         if (!result.destination) return;
@@ -45,6 +59,12 @@ export default function DragDropOptions() {
             [result.source.droppableId]: sourceList,
             [result.destination.droppableId]: destinationList,
         });
+
+        // Reset to first question when drag happens
+        setQuestionIndex(1);
+        setVisibleQuestions([questionsList[0]]);
+        setShowQuestionButton(true);
+        setShowMoveNextButton(false);
     };
 
     const handleSubmit = () => {
@@ -81,12 +101,38 @@ export default function DragDropOptions() {
         setOpenModal(false);
     };
 
+    const handleShowNextQuestion = () => {
+        if (questionIndex < questionsList.length) {
+            setVisibleQuestions(prev => [...prev, questionsList[questionIndex]]);
+            const nextIndex = questionIndex + 1;
+            setQuestionIndex(nextIndex);
+
+            if (nextIndex >= questionsList.length) {
+                setShowQuestionButton(false);
+
+                // Check if all characters are placed
+                const totalPlaced = sections.Classroom.length + sections.SoccerGame.length + sections.Home.length;
+                const totalChars = initialOptions.length;
+                if (totalPlaced < totalChars) {
+                    setShowMoveNextButton(true);
+                }
+            }
+        }
+    };
+
+    const handleMoveNextPlace = () => {
+        setVisibleQuestions([questionsList[0]]);
+        setQuestionIndex(1);
+        setShowQuestionButton(true);
+        setShowMoveNextButton(false);
+    };
+
     return (
         <div className="relative h-screen p-5 flex flex-col sequenceConatinerX">
+
             <DragDropContext onDragEnd={onDragEnd}>
                 <div className="grid grid-cols-4 gap-4 w-full">
-
-                    {/* Options Column */}
+                    {/* Options */}
                     <Droppable droppableId="options">
                         {(provided) => (
                             <div
@@ -127,11 +173,9 @@ export default function DragDropOptions() {
                                 <h2 className="text-lg font-semibold mb-4 text-center text-green-700">
                                     <u>Classroom</u>
                                 </h2>
-
                                 <center>
                                     <Image src={S1} alt='s1' className='rounded-[10px] mb-[10px] w-[230px]' />
                                 </center>
-
                                 {sections.Classroom.map((item, index) => (
                                     <Draggable key={item.id} draggableId={item.id} index={index}>
                                         {(provided) => (
@@ -165,7 +209,6 @@ export default function DragDropOptions() {
                                 <center>
                                     <Image src={S2} alt='s2' className='rounded-[10px] mb-[10px] w-[230px]' />
                                 </center>
-
                                 {sections.SoccerGame.map((item, index) => (
                                     <Draggable key={item.id} draggableId={item.id} index={index}>
                                         {(provided) => (
@@ -199,7 +242,6 @@ export default function DragDropOptions() {
                                 <center>
                                     <Image src={S3} alt='s3' className='rounded-[10px] mb-[10px] w-[230px]' />
                                 </center>
-
                                 {sections.Home.map((item, index) => (
                                     <Draggable key={item.id} draggableId={item.id} index={index}>
                                         {(provided) => (
@@ -218,11 +260,10 @@ export default function DragDropOptions() {
                             </div>
                         )}
                     </Droppable>
-
                 </div>
 
                 {/* Submit Button */}
-                {showSubmitBtn() &&
+                {showSubmitBtn() && (
                     <div className="flex justify-center mt-8">
                         <button
                             onClick={handleSubmit}
@@ -231,9 +272,36 @@ export default function DragDropOptions() {
                             Submit
                         </button>
                     </div>
-                }
-
+                )}
             </DragDropContext>
+
+            {/* Questions Area */}
+            <div className="mt-6">
+                {visibleQuestions.map((q, i) => (
+                    <div
+                        key={i}
+                        className="mb-2 text-black text-lg font-bold border border-yellow-500 p-3 rounded-lg bg-yellow-100"
+                    >
+                        {q}
+                    </div>
+                ))}
+                {showQuestionButton && (
+                    <button
+                        onClick={handleShowNextQuestion}
+                        className="bg-blue-600 text-white px-4 py-2 rounded-md mt-2 hover:bg-blue-700 transition"
+                    >
+                        Show Next Question
+                    </button>
+                )}
+                {showMoveNextButton && (
+                    <button
+                        onClick={handleMoveNextPlace}
+                        className="bg-purple-600 text-white px-4 py-2 rounded-md mt-2 hover:bg-purple-700 transition"
+                    >
+                        Move to Next Place
+                    </button>
+                )}
+            </div>
 
             {/* Modal */}
             <Modal

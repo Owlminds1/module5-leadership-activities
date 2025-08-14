@@ -1,44 +1,61 @@
 'use client'
 
 import { useState, useRef } from 'react'
+import S1 from '../assets/s1.png';
+import S2 from '../assets/s2.png';
+import S3 from '../assets/s3.png';
+import Image from 'next/image';
+
+const fakePrize = {
+    main: "Try Again",
+    seen: "This slice is just for fun — it’s a fake one! You’ll need to spin again next time.",
+    questions: [],
+    img: S1 // can be any placeholder
+};
 
 const initialPrizes = [
     {
         main: "Birthday Boss",
-        seen: "It’s your friend’s birthday party, and YOU are the Birthday Boss! That means you’re in charge of making sure everyone has fun, feels included, and stays safe. You get to decide the games, snacks, and party rules!",
+        seen: "It’s your friend’s birthday party, and YOU are the Birthday Boss! You’re in charge of making sure everyone has fun, feels included, and stays safe. You get to decide the games, snacks, and party rules!",
         questions: [
-            "What are 3 fun things you'd plan for the party to make everyone smile?",
+            "What are 3 fun activities you would do?",
             "What’s one party rule you’d make so everyone feels included?",
             "If someone at the party is sad or left out, what would you say to them?",
             "What can you do to make sure YOU are being a kind and fair Birthday Boss?",
+            "What food will you select so that everyone likes the food served?",
+            "What can you do to make sure YOU are being a kind and fair Birthday Boss?",
             "How can you help your guests feel special too?",
-        ]
+        ],
+        img : S1
     },
     {
         main: "Pet Leader",
         seen: "You’re in charge of a house full of pets, some real, some imaginary! A puppy won’t stop barking, a cat spilled her food, and a parrot looks sad. It’s your job to help your pets feel calm, safe, and happy!",
         questions: [
-            "What are 3 things you would do right away to help your pets: A puppy that keeps barking. A cat that knocked over her food bowl. A guinea pig that’s hiding in its house?",
+            "You’re in charge of three pets! A puppy won’t stop barking, a cat spilled her food, and a parrot thats unusually quiet! Take care of the pets to make them calm and happy!",
+            "What are 3 things you would immediately do to help your pets: A puppy that keeps barking.A cat that knocked over her food bowl",
             "What rule would you make for your pets to keep your home safe and peaceful?",
             "If your parrot is feeling lonely, what would you do to cheer them up?",
             "How will you be a kind and fair Pet Leader every day?",
-        ]
+        ],
+        img : S2
     },
     {
         main: "Caring Sibling",
         seen: "Your little sibling was playing outside and accidentally tripped and scraped their knee. They’re crying, and you want to help them feel better. It’s your job to take care of them until a grown-up arrives!",
         questions: [
-            "What are 3 things you would do right away to help your sibling?",
-            "Your sibling is crying and scared. What would you say or do to make them feel better?",
+            "What are 3 things you would immediately do to help your sibling?",
+            "Your sibling is crying. What would you say or do to make them feel better?",
             "How are you showing leadership at this moment?"
-        ]
+        ],
+        img : S3
     }
 ]
 
 export default function SpinWheelGame() {
     const [isSpinning, setIsSpinning] = useState(false)
     const [rotation, setRotation] = useState(0)
-    const [prizes, setPrizes] = useState(initialPrizes)
+    const [prizes, setPrizes] = useState([fakePrize, ...initialPrizes]) // fake slice added first
     const [selectedPrize, setSelectedPrize] = useState(null)
     const [shownQuestions, setShownQuestions] = useState([])
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(-1)
@@ -47,7 +64,7 @@ export default function SpinWheelGame() {
     const totalSectors = prizes.length
     const degreesPerSector = 360 / totalSectors
 
-    const colors = ['#FF6B6B', '#FFD93D', '#6BCB77', '#4D96FF', '#A29BFE', '#E84393']
+    const colors = ['#CCCCCC', '#FF6B6B', '#FFD93D', '#6BCB77', '#4D96FF', '#A29BFE', '#E84393']
 
     const backgroundStyle = prizes.map((_, i) => {
         const color = colors[i % colors.length]
@@ -56,36 +73,46 @@ export default function SpinWheelGame() {
         return `${color} ${start}% ${end}%`
     }).join(', ')
 
+    
     const spinWheel = () => {
-        if (isSpinning || prizes.length === 0) return
-
-        const selected = Math.floor(Math.random() * prizes.length)
-        const extraSpins = 5 * 360
-        const newRotation = extraSpins + selected * degreesPerSector + degreesPerSector / 2
-        const totalRotation = rotation + newRotation
-
-        wheelRef.current.style.transition = 'transform 4s cubic-bezier(0.33, 1, 0.68, 1)'
-        wheelRef.current.style.transform = `rotate(${totalRotation}deg)`
-
-        setIsSpinning(true)
-        setRotation(totalRotation)
-
+        if (isSpinning || prizes.length <= 1) return // no spin if only fake remains
+    
+        let selected;
+    
+        // Keep picking until it's NOT the fake slice
+        do {
+            selected = Math.floor(Math.random() * prizes.length);
+        } while (prizes[selected].main === "Try Again");
+    
+        const extraSpins = 5 * 360;
+        const newRotation = extraSpins + selected * degreesPerSector + degreesPerSector / 2;
+        const totalRotation = rotation + newRotation;
+    
+        wheelRef.current.style.transition = 'transform 4s cubic-bezier(0.33, 1, 0.68, 1)';
+        wheelRef.current.style.transform = `rotate(${totalRotation}deg)`;
+    
+        setIsSpinning(true);
+        setRotation(totalRotation);
+    
         setTimeout(() => {
-            const prize = prizes[selected]
-            setSelectedPrize(prize)
-            setCurrentQuestionIndex(-1)           // Start at -1, so first click gives Q0
-            setShownQuestions([])                 // Clear previous questions
-            const updatedPrizes = prizes.filter((_, index) => index !== selected)
-            setPrizes(updatedPrizes)
-            setIsSpinning(false)
-        }, 4000)
-    }
+            const prize = prizes[selected];
+            setSelectedPrize(prize);
+            setCurrentQuestionIndex(-1);
+            setShownQuestions([]);
+    
+            // Remove only real prizes
+            const updatedPrizes = prizes.filter((_, index) => index !== selected);
+            setPrizes(updatedPrizes);
+    
+            setIsSpinning(false);
+        }, 4000);
+    };
+    
 
     const nextQuestion = () => {
         if (!selectedPrize) return
 
         const nextIndex = currentQuestionIndex + 1
-
         if (nextIndex < selectedPrize.questions.length) {
             setCurrentQuestionIndex(nextIndex)
             setShownQuestions(prev => [...prev, selectedPrize.questions[nextIndex]])
@@ -109,14 +136,14 @@ export default function SpinWheelGame() {
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[150%] w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-b-[40px] border-b-black mt-8" />
                 </div>
 
-                {prizes.length > 0 && (
+                {prizes.length > 1 && (
                     <button
                         onClick={spinWheel}
                         className={`px-12 py-3 text-white text-lg font-semibold rounded-full shadow-md transition
                          ${isSpinning ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 cursor-pointer'}`}
                         disabled={isSpinning}
                     >
-                        {isSpinning ? 'Spinning...' : (prizes.length === 1 ? 'Last Spin' : 'Spin')}
+                        {isSpinning ? 'Spinning...' : 'Spin'}
                     </button>
                 )}
             </div>
@@ -132,6 +159,12 @@ export default function SpinWheelGame() {
                             <p className='text-xl mb-6'>
                                 {selectedPrize.seen}
                             </p>
+
+                            <Image
+                                src={selectedPrize.img}
+                                alt={selectedPrize.main}
+                                className="w-[300px] h-auto rounded-lg shadow-md mb-6"
+                            />
                         </div>
 
                         {shownQuestions.length > 0 && (

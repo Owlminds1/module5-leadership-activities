@@ -23,7 +23,7 @@ export default function Slider() {
         },
         {
             img: S3,
-            subHeading: "Sam sat down for lunch at school and opened his lunchbox, excited to eat his favorite yogurt. But then he realized, he had forgotten to pack a spoon! He looked around, wondering what he could do",
+            subHeading: "Sam sat down for lunch at school and opened his lunchbox excited to eat his favorite yogurt. But then he realized he did not have a spoon. He looked around, wondering what he could do!",
         }
     ]
 

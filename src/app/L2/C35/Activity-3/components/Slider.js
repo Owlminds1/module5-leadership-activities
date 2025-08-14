@@ -21,7 +21,7 @@ export default function Slider() {
         },
         {
             img: P2,
-            heading: "Kids are getting bored in the Library by just reading books.",
+            heading: "Kids are getting bored in the library by just reading books.",
             logicBotSolution: "Turn every book into a TV screen.",
         },
         {

@@ -14,7 +14,7 @@ const initialOptions = [
     { id: "2", text: "Team Captain", answer: "Sports" },
     { id: "3", text: "Principal", answer: "School" },
     { id: "4", text: "Referee", answer: "Sports" },
-    { id: "5", text: "First Aid Leader", answer: "School/Sports" }, // Valid in either category
+    { id: "5", text: "First Aid Leader", answer: "School/Sports" },
 ];
 
 export default function DragDropOptions() {
@@ -27,6 +27,17 @@ export default function DragDropOptions() {
         School: [],
         Sports: []
     });
+
+    // Question flow state
+    const [currentLeaderIndex, setCurrentLeaderIndex] = useState(0);
+    const [questionStep, setQuestionStep] = useState(0);
+    const [showQuestions, setShowQuestions] = useState(true);
+
+    const questionsTemplate = [
+        leader => `What does ${leader} leader do?`,
+        () => "What should they do to be a good leader?",
+        () => "What are the top 2-3 leadership qualities they should have?"
+    ];
 
     const onDragEnd = (result) => {
         if (!result.destination) return;
@@ -44,14 +55,39 @@ export default function DragDropOptions() {
             [result.source.droppableId]: sourceList,
             [result.destination.droppableId]: destinationList,
         });
+
+        // If current leader is placed, hide questions and go to next leader
+        if (movedItem.id === initialOptions[currentLeaderIndex].id) {
+            setShowQuestions(false);
+            setTimeout(() => {
+                if (currentLeaderIndex < initialOptions.length - 1) {
+                    setCurrentLeaderIndex(prev => prev + 1);
+                    setQuestionStep(0);
+                    setShowQuestions(true);
+                }
+            }, 300);
+        }
+    };
+
+    const handleNextQuestion = () => {
+        if (questionStep < questionsTemplate.length - 1) {
+            setQuestionStep(prev => prev + 1);
+        }
     };
 
     const handleSubmit = () => {
         const updatedSections = { ...sections };
         let correctCount = 0;
         let totalCount = 0;
+        let missingCount = false;
+
+        const minRequiredPerCategory = 2;
 
         ["School", "Sports"].forEach((sectionKey) => {
+            if (updatedSections[sectionKey].length < minRequiredPerCategory) {
+                missingCount = true;
+            }
+
             updatedSections[sectionKey] = updatedSections[sectionKey].map(item => {
                 const isCorrect = item.answer === sectionKey || item.answer === "School/Sports";
                 if (isCorrect) correctCount++;
@@ -63,10 +99,15 @@ export default function DragDropOptions() {
         setSections(updatedSections);
 
         setTimeout(() => {
-            if (correctCount === totalCount) {
-                setModalTitle('Yay! All answers are correct!');
+            if (missingCount) {
+                setModalTitle("Almost there!");
+                setModalContent(`Please make sure all the leadership roles are placed in their correct categories before submitting.`);
+            } else if (correctCount === totalCount && totalCount > 0) {
+                setModalTitle("Yay! All answers are correct!");
+                setModalContent("Great job! You've placed all leadership roles in the correct categories.");
             } else {
                 setModalTitle("Oops! Some answers are incorrect.");
+                setModalContent("Check your placements and try again.");
             }
             setOpenModal(true);
         }, 200);
@@ -82,11 +123,10 @@ export default function DragDropOptions() {
 
     return (
         <div className="relative h-screen p-5 flex flex-col sequenceConatinerX">
-            <DragDropContext onDragEnd={onDragEnd}>
 
+            <DragDropContext onDragEnd={onDragEnd}>
                 {/* 3 Columns Layout */}
                 <div className="grid grid-cols-3 gap-4 w-full">
-
                     {/* Options Column */}
                     <Droppable droppableId="options">
                         {(provided) => (
@@ -131,7 +171,6 @@ export default function DragDropOptions() {
                                 <center>
                                     <Image src={S1} alt='s1' className='rounded-[10px] mb-[10px] w-[280px]' />
                                 </center>
-
                                 {sections.School.map((item, index) => (
                                     <Draggable key={item.id} draggableId={item.id} index={index}>
                                         {(provided) => (
@@ -165,7 +204,6 @@ export default function DragDropOptions() {
                                 <center>
                                     <Image src={S2} alt='s2' className='rounded-[10px] mb-[10px] w-[280px]' />
                                 </center>
-
                                 {sections.Sports.map((item, index) => (
                                     <Draggable key={item.id} draggableId={item.id} index={index}>
                                         {(provided) => (
@@ -184,7 +222,6 @@ export default function DragDropOptions() {
                             </div>
                         )}
                     </Droppable>
-
                 </div>
 
                 {/* Submit Button */}
@@ -198,8 +235,25 @@ export default function DragDropOptions() {
                         </button>
                     </div>
                 }
-
             </DragDropContext>
+
+
+            {/* Question Display */}
+            {showQuestions && (
+                <div className="bg-white p-4 rounded-lg shadow-md mt-4">
+                    <p className="text-lg font-semibold mb-2 text-black">
+                        {questionsTemplate[questionStep](initialOptions[currentLeaderIndex].text)}
+                    </p>
+                    {questionStep < questionsTemplate.length - 1 && (
+                        <button
+                            onClick={handleNextQuestion}
+                            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+                        >
+                            Next
+                        </button>
+                    )}
+                </div>
+            )}
 
             {/* Modal */}
             <Modal

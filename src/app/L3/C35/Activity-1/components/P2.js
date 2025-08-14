@@ -4,26 +4,18 @@ import { useState } from 'react';
 
 const problems = [
     {
-        id: 'backpack',
-        title: "A backpack that doesn’t hurt your shoulders even when it’s heavy ",
-        questions: [
-            "Where do we see nature handling slippery surfaces?",
-            "What animals walk in rain without slipping?",
-            "What textures help grip wet surfaces?"
-        ]
-    },
-    {
         id: 'oceans',
-        title: "A way to clean up plastic in oceans quickly",
+        title: "A way to clean up plastic in oceans quickly.",
         questions: [
-            "How does nature store many things in small space?",
-            "Can you think of foldable or stretchable features in nature?",
-            "What shapes help organize things efficiently?"
+            "Can you think of a creature that gathers or collects things from water?",
+            "Is there a sea creature that filters or stores stuff?",
+            "How do whales or jellyfish eat their food?",
+            "What creature scoops or filters tiny things out of water?",
         ]
     },
     {
         id: 'shoes',
-        title: "Shoes that grip even on slippery surfaces",
+        title: "Shoes that grip even on slippery surfaces.",
         questions: [
             "What structures in nature stand firm against wind?",
             "How do trees or plants bend but not break?",
@@ -62,14 +54,14 @@ export default function BiomimicryForKids() {
 
             {/* LHS: Problem List (only show if not yet selected) */}
             {!selectedProblemId && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 w-full max-w-5xl">
                     {problems.map((problem, index) => (
                         <button
                             key={problem.id}
                             onClick={() => handleProblemClick(problem.id)}
                             className="bg-white cursor-pointer text-center hover:bg-pink-100 border-4 border-pink-300 p-6 rounded-2xl shadow-xl transition text-lg font-semibold text-gray-800"
                         >
-                            Problem {index+1}
+                            Problem {index + 1}
                             <br />
                             {problem.title}
                         </button>
