@@ -2,6 +2,11 @@
 
 import { useState, useRef } from 'react'
 
+const fakePrize = {
+    scenario: "Try Again!",
+    questions: "This is a fake slice — you don’t get a scenario this time."
+}
+
 const initialPrizes = [
     {
         scenario: "A classmate made a mistake during an important presentation and now feels really embarrassed in front of everyone.",
@@ -25,21 +30,22 @@ export default function Home() {
     const [isSpinning, setIsSpinning] = useState(false)
     const [rotation, setRotation] = useState(0)
     const [result, setResult] = useState(null)
-    const [prizes, setPrizes] = useState(initialPrizes)
+    const [prizes, setPrizes] = useState([fakePrize, ...initialPrizes]) // fake slice at start
     const wheelRef = useRef(null)
 
     const totalSectors = prizes.length
     const degreesPerSector = 360 / totalSectors
 
     const colors = [
+        '#CCCCCC', // fake slice color
         '#FF6B6B', '#FFD93D', '#6BCB77', '#4D96FF',
         'purple', 'gray', 'orange', 'cyan', 'red',
         '#A29BFE', '#00B894', '#E84393'
     ]
 
-    const backgroundStyle = colors
-        .slice(0, totalSectors)
-        .map((color, i) => {
+    const backgroundStyle = prizes
+        .map((_, i) => {
+            const color = colors[i % colors.length]
             const start = (i * 100) / totalSectors
             const end = ((i + 1) * 100) / totalSectors
             return `${color} ${start}% ${end}%`
@@ -47,9 +53,14 @@ export default function Home() {
         .join(', ')
 
     const spinWheel = () => {
-        if (isSpinning || !wheelRef.current) return
+        if (isSpinning || prizes.length <= 1) return // stop if only fake remains
 
-        const selected = Math.floor(Math.random() * totalSectors)
+        let selected
+        // keep spinning until it's not the fake slice
+        do {
+            selected = Math.floor(Math.random() * totalSectors)
+        } while (prizes[selected].scenario === "Try Again!")
+
         const extraSpins = 5 * 360
         const newRotation = extraSpins + selected * degreesPerSector + degreesPerSector / 2
         const totalRotation = rotation + newRotation
@@ -62,19 +73,20 @@ export default function Home() {
         setRotation(totalRotation)
 
         setTimeout(() => {
-            setIsSpinning(false)
             const selectedPrize = prizes[selected]
             setResult(selectedPrize)
 
             const updatedPrizes = prizes.filter((_, index) => index !== selected)
             setPrizes(updatedPrizes)
+
+            setIsSpinning(false)
         }, 4000)
     }
 
     const showBtnText = () => {
         if (prizes.length === 0) return ''
         if (isSpinning) return 'Spinning...'
-        if (prizes.length === 1) return 'Click me to play the last spin'
+        if (prizes.length === 1) return 'Last spin'
         return 'Spin'
     }
 
@@ -95,7 +107,7 @@ export default function Home() {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[150%] w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-b-[40px] border-b-black mt-8" />
             </div>
 
-            {prizes.length > 0 && (
+            {prizes.length > 1 && ( // hide when only fake remains
                 <button
                     onClick={spinWheel}
                     className={`px-12 py-3 text-white text-lg font-semibold rounded-full shadow-md transition
@@ -106,7 +118,7 @@ export default function Home() {
                 </button>
             )}
 
-            {result && (
+            {result && result.scenario !== "Try Again!" && ( // don't show fake result
                 <div className="mt-6 p-4 bg-white rounded-lg shadow-lg w-[1000px]">
                     <p className="text-2xl font-bold text-[#663399]">Scenario:</p>
                     <p className="mb-4 text-xl">{result.scenario}</p>

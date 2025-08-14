@@ -6,6 +6,13 @@ import S2 from '../assets/s2.png';
 import S3 from '../assets/s3.png';
 import Image from 'next/image';
 
+const fakePrize = {
+    main: "Try Again",
+    seen: "This slice is just for fun — it’s a fake one! You’ll need to spin again next time.",
+    questions: [],
+    img: S1 // can be any placeholder
+};
+
 const initialPrizes = [
     {
         main: "Birthday Boss",
@@ -48,7 +55,7 @@ const initialPrizes = [
 export default function SpinWheelGame() {
     const [isSpinning, setIsSpinning] = useState(false)
     const [rotation, setRotation] = useState(0)
-    const [prizes, setPrizes] = useState(initialPrizes)
+    const [prizes, setPrizes] = useState([fakePrize, ...initialPrizes]) // fake slice added first
     const [selectedPrize, setSelectedPrize] = useState(null)
     const [shownQuestions, setShownQuestions] = useState([])
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(-1)
@@ -57,7 +64,7 @@ export default function SpinWheelGame() {
     const totalSectors = prizes.length
     const degreesPerSector = 360 / totalSectors
 
-    const colors = ['#FF6B6B', '#FFD93D', '#6BCB77', '#4D96FF', '#A29BFE', '#E84393']
+    const colors = ['#CCCCCC', '#FF6B6B', '#FFD93D', '#6BCB77', '#4D96FF', '#A29BFE', '#E84393']
 
     const backgroundStyle = prizes.map((_, i) => {
         const color = colors[i % colors.length]
@@ -66,36 +73,46 @@ export default function SpinWheelGame() {
         return `${color} ${start}% ${end}%`
     }).join(', ')
 
+    
     const spinWheel = () => {
-        if (isSpinning || prizes.length === 0) return
-
-        const selected = Math.floor(Math.random() * prizes.length)
-        const extraSpins = 5 * 360
-        const newRotation = extraSpins + selected * degreesPerSector + degreesPerSector / 2
-        const totalRotation = rotation + newRotation
-
-        wheelRef.current.style.transition = 'transform 4s cubic-bezier(0.33, 1, 0.68, 1)'
-        wheelRef.current.style.transform = `rotate(${totalRotation}deg)`
-
-        setIsSpinning(true)
-        setRotation(totalRotation)
-
+        if (isSpinning || prizes.length <= 1) return // no spin if only fake remains
+    
+        let selected;
+    
+        // Keep picking until it's NOT the fake slice
+        do {
+            selected = Math.floor(Math.random() * prizes.length);
+        } while (prizes[selected].main === "Try Again");
+    
+        const extraSpins = 5 * 360;
+        const newRotation = extraSpins + selected * degreesPerSector + degreesPerSector / 2;
+        const totalRotation = rotation + newRotation;
+    
+        wheelRef.current.style.transition = 'transform 4s cubic-bezier(0.33, 1, 0.68, 1)';
+        wheelRef.current.style.transform = `rotate(${totalRotation}deg)`;
+    
+        setIsSpinning(true);
+        setRotation(totalRotation);
+    
         setTimeout(() => {
-            const prize = prizes[selected]
-            setSelectedPrize(prize)
-            setCurrentQuestionIndex(-1)           // Start at -1, so first click gives Q0
-            setShownQuestions([])                 // Clear previous questions
-            const updatedPrizes = prizes.filter((_, index) => index !== selected)
-            setPrizes(updatedPrizes)
-            setIsSpinning(false)
-        }, 4000)
-    }
+            const prize = prizes[selected];
+            setSelectedPrize(prize);
+            setCurrentQuestionIndex(-1);
+            setShownQuestions([]);
+    
+            // Remove only real prizes
+            const updatedPrizes = prizes.filter((_, index) => index !== selected);
+            setPrizes(updatedPrizes);
+    
+            setIsSpinning(false);
+        }, 4000);
+    };
+    
 
     const nextQuestion = () => {
         if (!selectedPrize) return
 
         const nextIndex = currentQuestionIndex + 1
-
         if (nextIndex < selectedPrize.questions.length) {
             setCurrentQuestionIndex(nextIndex)
             setShownQuestions(prev => [...prev, selectedPrize.questions[nextIndex]])
@@ -119,14 +136,14 @@ export default function SpinWheelGame() {
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[150%] w-0 h-0 border-l-[20px] border-l-transparent border-r-[20px] border-r-transparent border-b-[40px] border-b-black mt-8" />
                 </div>
 
-                {prizes.length > 0 && (
+                {prizes.length > 1 && (
                     <button
                         onClick={spinWheel}
                         className={`px-12 py-3 text-white text-lg font-semibold rounded-full shadow-md transition
                          ${isSpinning ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 cursor-pointer'}`}
                         disabled={isSpinning}
                     >
-                        {isSpinning ? 'Spinning...' : (prizes.length === 1 ? 'Last Spin' : 'Spin')}
+                        {isSpinning ? 'Spinning...' : 'Spin'}
                     </button>
                 )}
             </div>

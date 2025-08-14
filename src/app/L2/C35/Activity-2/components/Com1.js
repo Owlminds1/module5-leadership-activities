@@ -15,6 +15,7 @@ export default function Com1(pros) {
                     <h1 className="mb-4 text-3xl font-bold text-blue-800">Brightside Elementary School</h1>
                     <p className="mb-4 text-gray-700 max-w-md text-[19px]">
                         This week at Brightside Elementary School, three tricky problems have popped up.
+                        <br />
                         Principal Penny is on the lookout for someone brilliant to come up with smart, creative solutions. Are you ready to help the principal save the day?
                     </p>
                     <Image
